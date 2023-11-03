@@ -4,9 +4,10 @@ export function DecksIndex(props) {
       <h1>All Decks</h1>
       {props.decks.map((deck) => (
         <div key={deck.id}>
-          <h2>{deck.name}</h2>
-          <h2>{deck.format}</h2>
-          <h2>{deck.card_count}</h2>
+          <p>Deck Name: {deck.name}</p>
+          <p>Format: {deck.format}</p>
+          <p>Card Count: {deck.card_count}</p>
+          <button onClick={() => props.onShowDeck(deck)}>More Info</button>
         </div>
       ))}
     </div>
