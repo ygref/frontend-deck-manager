@@ -1,15 +1,18 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { CardsShow } from "./CardsShow";
 
 import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { LogoutLink } from "./LogoutLink";
+
 import { DecksIndex } from "./DecksIndex";
 import { DecksNew } from "./DecksNew";
 import { DecksShow } from "./DecksShow";
+
+import { CardsShow } from "./CardsShow";
 import { CardsIndex } from "./CardsIndex";
 import { CardsNew } from "./CardsNew";
+
 import { Modal } from "./Modal";
 
 export function Content() {
@@ -39,6 +42,30 @@ export function Content() {
     console.log("handleShowDeck", deck);
     setIsDecksShowVisible(true);
     setCurrentDeck(deck);
+  };
+  const handleUpdateDeck = (id, params, successCallback) => {
+    console.log("handleUpdateDeck", params);
+    axios.patch(`http://localhost:3000/decks/${id}.json`, params).then((response) => {
+      setDecks(
+        decks.map((deck) => {
+          if (deck.id === response.data.id) {
+            return response.data;
+          } else {
+            return deck;
+          }
+        })
+      );
+      successCallback();
+      handleCloseDeck();
+    });
+  };
+
+  const handleDestroyDeck = (deck) => {
+    console.log("handleDestroyDeck", deck);
+    axios.delete(`http://localhost:3000/decks/${deck.id}.json`).then((response) => {
+      setDecks(decks.filter((p) => p.id !== deck.id));
+      handleCloseDeck();
+    });
   };
 
   const handleCloseDeck = () => {
@@ -73,11 +100,28 @@ export function Content() {
     });
   };
 
+  const handleUpdateCard = (id, params, successCallback) => {
+    console.log("handleUpdateCard", params);
+    axios.patch(`http://localhost:3000/cards/${id}.json`, params).then((response) => {
+      setCards(
+        cards.map((card) => {
+          if (card.id === response.data.id) {
+            return response.data;
+          } else {
+            return card;
+          }
+        })
+      );
+      successCallback();
+      handleCloseCard();
+    });
+  };
+
   const handleDestroyCard = (card) => {
     console.log("handleDestroyCard", card);
     axios.delete(`http://localhost:3000/cards/${card.id}.json`).then((response) => {
       setCards(cards.filter((p) => p.id !== card.id));
-      handleClose();
+      handleCloseCard();
     });
   };
 
@@ -91,12 +135,12 @@ export function Content() {
       <LogoutLink />
       <DecksIndex decks={decks} onShowDeck={handleShowDeck} />
       <Modal show={isDecksShowVisible} onClose={handleCloseDeck}>
-        <DecksShow deck={currentDeck} />
+        <DecksShow deck={currentDeck} onUpdateDeck={handleUpdateDeck} onDestroyDeck={handleDestroyDeck} />
       </Modal>
       <DecksNew onCreateDeck={handleCreateDeck} />
       <CardsIndex cards={cards} onShowCard={handleShowCard} />
       <Modal show={isCardsShowVisible} onClose={handleCloseCard}>
-        <CardsShow card={currentCard} onDestroyCard={handleDestroyCard} />
+        <CardsShow card={currentCard} onUpdateCard={handleUpdateCard} onDestroyCard={handleDestroyCard} />
       </Modal>
       <CardsNew onCreateCard={handleCreateCard} />
     </div>
