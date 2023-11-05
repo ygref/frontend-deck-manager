@@ -13,6 +13,8 @@ import { CardsShow } from "./CardsShow";
 import { CardsIndex } from "./CardsIndex";
 import { CardsNew } from "./CardsNew";
 
+import { CardDeckForm } from "./CardDeckForm";
+
 import { Modal } from "./Modal";
 
 export function Content() {
@@ -62,7 +64,7 @@ export function Content() {
 
   const handleDestroyDeck = (deck) => {
     console.log("handleDestroyDeck", deck);
-    axios.delete(`http://localhost:3000/decks/${deck.id}.json`).then((response) => {
+    axios.delete(`http://localhost:3000/decks/${deck.id}.json`).then(() => {
       setDecks(decks.filter((p) => p.id !== deck.id));
       handleCloseDeck();
     });
@@ -119,9 +121,17 @@ export function Content() {
 
   const handleDestroyCard = (card) => {
     console.log("handleDestroyCard", card);
-    axios.delete(`http://localhost:3000/cards/${card.id}.json`).then((response) => {
+    axios.delete(`http://localhost:3000/cards/${card.id}.json`).then(() => {
       setCards(cards.filter((p) => p.id !== card.id));
       handleCloseCard();
+    });
+  };
+
+  const handleCreateCardDeck = (params, successCallback) => {
+    console.log("handleCreateCardDeck", params);
+    axios.post("http://localhost:3000/card_decks.json", params).then(() => {
+      // setCardDecks([...card_decks, response.data]);
+      successCallback();
     });
   };
 
@@ -143,6 +153,7 @@ export function Content() {
         <CardsShow card={currentCard} onUpdateCard={handleUpdateCard} onDestroyCard={handleDestroyCard} />
       </Modal>
       <CardsNew onCreateCard={handleCreateCard} />
+      <CardDeckForm onCreateCardDeck={handleCreateCardDeck} />
     </div>
   );
 }

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 export function DecksShow(props) {
   const handleClick = () => {
     props.onDestroyDeck(props.deck);
@@ -15,13 +16,15 @@ export function DecksShow(props) {
       <p>Format: {props.deck.format}</p>
       <p>Card Count: {props.deck.card_count}</p>
       Cards:{" "}
-      {props.deck.cards.map((card) => (
-        <div key={card.id}>
-          <p>{card.name}</p>
-          <p>CMC: {card.cmc}</p>
-          <p>{card.card_type}</p>
+      {props.deck.card_decks.map((card_deck) => (
+        <div key={card_deck.id}>
+          <h2>
+            {card_deck.card.name} (x{card_deck.quantity})
+          </h2>
+          <p>CMC: {card_deck.card.cmc}</p>
+          <p>{card_deck.card.card_type}</p>
           <p>
-            Power: {card.power} / Toughness: {card.toughness}
+            Power: {card_deck.card.power} / Toughness: {card_deck.card.toughness}
           </p>
         </div>
       ))}
