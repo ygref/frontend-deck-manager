@@ -14,6 +14,17 @@ export function DecksShow(props) {
       <p>Deck Name: {props.deck.name}</p>
       <p>Format: {props.deck.format}</p>
       <p>Card Count: {props.deck.card_count}</p>
+      Cards:{" "}
+      {props.deck.cards.map((card) => (
+        <div key={card.id}>
+          <p>{card.name}</p>
+          <p>CMC: {card.cmc}</p>
+          <p>{card.card_type}</p>
+          <p>
+            Power: {card.power} / Toughness: {card.toughness}
+          </p>
+        </div>
+      ))}
       <form onSubmit={handleSubmit}>
         <div>
           Deck Name: <input defaultValue={props.deck.name} name="name" type="text" />
@@ -24,7 +35,7 @@ export function DecksShow(props) {
         <div>
           Card Count: <input defaultValue={props.deck.card_count} name="card_count" type="text" />
         </div>
-        <button type="submit">Update Deck</button>
+        <button type="submit">Update Deck Info</button>
       </form>
       <button onClick={handleClick}>Destroy Deck</button>
     </div>

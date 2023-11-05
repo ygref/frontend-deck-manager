@@ -31,7 +31,7 @@ export function CardsShow(props) {
           Power: <input defaultValue={props.card.power} name="power" type="text" /> / Toughness:{" "}
           <input defaultValue={props.card.toughness} name="toughness" type="text" />
         </div>
-        <button type="submit">Update Card</button>
+        <button type="submit">Update Card Info</button>
       </form>
       <button onClick={handleClick}>Delete Card</button>
     </div>
