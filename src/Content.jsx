@@ -156,7 +156,7 @@ export function Content() {
         <Route path="/carddeck/new" element={<CardDeckForm onCreateCardDeck={handleCreateCardDeck} />} />
       </Routes>
 
-      <Library />
+      <Library onCreateCard={handleCreateCard} />
 
       <Modal show={isDecksShowVisible} onClose={handleCloseDeck}>
         <DecksShow deck={currentDeck} onUpdateDeck={handleUpdateDeck} onDestroyDeck={handleDestroyDeck} />

@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import "./Library.css";
 
-export function Library() {
+export function Library(props) {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState(null);
 
@@ -77,6 +78,22 @@ export function Library() {
                   <p>
                     <a href={result.purchase_uris}>Purchase on TCGPlayer</a>{" "}
                   </p>
+                  <button
+                    onClick={() =>
+                      props.onCreateCard(
+                        {
+                          name: result.name,
+                          card_type: result.card_type,
+                          cmc: result.cmc,
+                          power: result.power,
+                          toughness: result.toughness,
+                        },
+                        () => console.log("Done!")
+                      )
+                    }
+                  >
+                    Add Card
+                  </button>
                 </div>
               )}
             </div>
