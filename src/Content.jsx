@@ -1,6 +1,10 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
 
+import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+
+import { Home } from "./Home";
+import { Library } from "./Library";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { LogoutLink } from "./LogoutLink";
@@ -140,20 +144,27 @@ export function Content() {
 
   return (
     <div>
-      <Signup />
-      <Login />
-      <LogoutLink />
-      <DecksIndex decks={decks} onShowDeck={handleShowDeck} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<LogoutLink />} />
+        <Route path="/decks" element={<DecksIndex decks={decks} onShowDeck={handleShowDeck} />} />
+        <Route path="/decks/new" element={<DecksNew onCreateDeck={handleCreateDeck} />} />
+        <Route path="/cards" element={<CardsIndex cards={cards} onShowCard={handleShowCard} />} />
+        <Route path="/cards/new" element={<CardsNew onCreateCard={handleCreateCard} />} />
+        <Route path="/carddeck/new" element={<CardDeckForm onCreateCardDeck={handleCreateCardDeck} />} />
+      </Routes>
+
+      <Library />
+
       <Modal show={isDecksShowVisible} onClose={handleCloseDeck}>
         <DecksShow deck={currentDeck} onUpdateDeck={handleUpdateDeck} onDestroyDeck={handleDestroyDeck} />
       </Modal>
-      <DecksNew onCreateDeck={handleCreateDeck} />
-      <CardsIndex cards={cards} onShowCard={handleShowCard} />
+
       <Modal show={isCardsShowVisible} onClose={handleCloseCard}>
         <CardsShow card={currentCard} onUpdateCard={handleUpdateCard} onDestroyCard={handleDestroyCard} />
       </Modal>
-      <CardsNew onCreateCard={handleCreateCard} />
-      <CardDeckForm onCreateCardDeck={handleCreateCardDeck} />
     </div>
   );
 }

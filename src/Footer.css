@@ -1,0 +1,23 @@
+/* Specific styles for the footer */
+footer {
+  background-color: #454444; 
+  color: #fff; 
+  padding: 2px 0; 
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+}
+
+footer nav {
+  text-align: center;
+}
+
+footer nav a {
+  color: #fff;
+  text-decoration: none; 
+  margin: 0 10px; 
+}
+
+footer nav a:hover {
+  color: black;
+}

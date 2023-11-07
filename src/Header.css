@@ -1,0 +1,23 @@
+header {
+  background-color: #454444; 
+  color: #fff; 
+  padding: 10px 0;
+  font-family: 'Arial', sans-serif; /* Use Arial or another sans-serif font */
+}
+
+header nav {
+  text-align: center; 
+}
+
+header nav a {
+  color: #fff;
+  text-decoration: none; 
+  margin: 0 10px;
+  font-weight: bold; /* Make the text bold for emphasis */
+}
+
+header nav a:hover {
+  color: black;
+  font-weight: bold;
+}
+
