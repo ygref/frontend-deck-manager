@@ -18,9 +18,9 @@ export function DecksShow(props) {
       Cards:{" "}
       {props.deck.card_decks.map((card_deck) => (
         <div key={card_deck.id}>
-          <h2>
+          <p>
             {card_deck.card.name} (x{card_deck.quantity})
-          </h2>
+          </p>
           <p>CMC: {card_deck.card.cmc}</p>
           <p>{card_deck.card.card_type}</p>
           <p>

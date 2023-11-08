@@ -1,0 +1,13 @@
+.decks-index-container {
+  column-count: 2; /* Change the number of columns as needed */
+  column-gap: 20px; /* Adjust the gap between columns */
+}
+
+.decks-index-container > div {
+  break-inside: avoid; /* Prevent a deck from breaking across columns */
+}
+
+.card-decks-container {
+  border: 1px solid #ccc; /* Add a border around each deck and cards */
+  margin-bottom: 20px; /* Adjust the spacing between decks */
+}

@@ -20,7 +20,16 @@
   padding: 1em;
   max-height: 50vh;
   overflow-y: auto; 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   
+}
+
+.modal-content {
+  width: calc(33.33% - 10px); 
+  padding: 10px;
+  margin: 5px;
 }
 
 .modal-main button.close {
