@@ -78,15 +78,32 @@ export function Library(props) {
                   <p>
                     <a href={result.purchase_uris}>Purchase on TCGPlayer</a>{" "}
                   </p>
+
+                  <select onChange={(event) => (result.deck_id = event.target.value)}>
+                    <option value="">- Select a Deck -</option>
+                    {props.decks.map((deck) => (
+                      <option key={deck.id} value={deck.id}>
+                        {deck.name}
+                      </option>
+                    ))}
+                  </select>
+                  <input
+                    type="number"
+                    placeholder="quantity"
+                    value={result.quantity || 0}
+                    onChange={(event) => (result.quantity = event.target.value)}
+                  />
                   <button
                     onClick={() =>
                       props.onCreateCard(
                         {
                           name: result.name,
-                          card_type: result.card_type,
+                          card_type: result.type_line,
                           cmc: result.cmc,
                           power: result.power,
                           toughness: result.toughness,
+                          quantity: result.quantity,
+                          deck_id: result.deck_id,
                         },
                         () => console.log("Done!")
                       )
