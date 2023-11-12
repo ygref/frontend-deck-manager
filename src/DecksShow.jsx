@@ -11,6 +11,18 @@ export function DecksShow(props) {
   };
   return (
     <div>
+      <form onSubmit={handleSubmit}>
+        <div>
+          Deck Name: <input defaultValue={props.deck.name} name="name" type="text" />
+        </div>
+        <div>
+          Format: <input defaultValue={props.deck.format} name="game_format" type="text" />
+        </div>
+        <div>
+          Card Count: <input defaultValue={props.deck.card_count} name="card_count" type="text" />
+        </div>
+        <button type="submit">Update Deck Info</button>
+      </form>
       <h1>Deck Info</h1>
       <p>Deck Name: {props.deck.name}</p>
       <p>Format: {props.deck.format}</p>
@@ -28,18 +40,6 @@ export function DecksShow(props) {
           </p>
         </div>
       ))}
-      <form onSubmit={handleSubmit}>
-        <div>
-          Deck Name: <input defaultValue={props.deck.name} name="name" type="text" />
-        </div>
-        <div>
-          Format: <input defaultValue={props.deck.format} name="game_format" type="text" />
-        </div>
-        <div>
-          Card Count: <input defaultValue={props.deck.card_count} name="card_count" type="text" />
-        </div>
-        <button type="submit">Update Deck Info</button>
-      </form>
       <button onClick={handleClick}>Destroy Deck</button>
     </div>
   );

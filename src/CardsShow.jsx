@@ -12,7 +12,7 @@ export function CardsShow(props) {
 
   return (
     <div>
-      <h1>Card information</h1>
+      <h1>Card Info:</h1>
       <p>Name: {props.card.name}</p>
       <p>CMC: {props.card.cmc}</p>
       <p>{props.card.card_type}</p>
@@ -20,7 +20,7 @@ export function CardsShow(props) {
         Power: {props.card.power} / Toughness: {props.card.toughness}
       </p>
 
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}>
         <div>
           Name: <input defaultValue={props.card.name} name="name" type="text" />
         </div>
@@ -32,7 +32,7 @@ export function CardsShow(props) {
           <input defaultValue={props.card.toughness} name="toughness" type="text" />
         </div>
         <button type="submit">Update Card Info</button>
-      </form>
+      </form> */}
       <button onClick={handleClick}>Delete Card</button>
     </div>
   );

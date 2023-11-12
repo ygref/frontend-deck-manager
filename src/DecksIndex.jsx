@@ -16,11 +16,11 @@ export function DecksIndex(props) {
                 <p>
                   {card_deck.card.name} (x{card_deck.quantity})
                 </p>
-                <p>CMC: {card_deck.card.cmc}</p>
+                {/* <p>CMC: {card_deck.card.cmc}</p> */}
                 <p>{card_deck.card.card_type}</p>
-                <p>
+                {/* <p>
                   Power: {card_deck.card.power} / Toughness: {card_deck.card.toughness}
-                </p>
+                </p> */}
               </div>
             ))}
           </div>
