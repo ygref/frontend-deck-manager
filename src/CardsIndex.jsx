@@ -11,7 +11,7 @@ export function CardsIndex(props) {
             <p>CMC: {card.cmc}</p>
             <p>{card.card_type}</p>
             <p>
-              Power: {card.power} / Toughness: {card.toughness}
+              Power: {card.power || "N/A"} / Toughness: {card.toughness || "N/A"}
             </p>
             {/* <p>Oracle Text: {card.oracle_text}</p> */}
             <button onClick={() => props.onShowCard(card)}>More Info:</button>

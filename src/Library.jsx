@@ -41,7 +41,7 @@ export function Library(props) {
     );
   };
 
-  const renderCardDetails = (card) => (
+  const renderCardDetails = (card, purchase_uris) => (
     <div>
       <img src={card.image_uris.small} />
       <p>Card Name: {card.name}</p>
@@ -55,7 +55,7 @@ export function Library(props) {
       <p>Sets: {card.set_name}</p>
       <p>Price USD: {card.prices && card.prices.usd ? card.prices.usd : "N/A"}</p>
       <p>
-        <a href={card.purchase_uris}>Purchase on TCGPlayer</a>{" "}
+        <a href={purchase_uris.tcgplayer}>Purchase on TCGPlayer</a>{" "}
       </p>
       <select onChange={(event) => (card.deck_id = event.target.value)}>
         <option value="">- Select a Deck -</option>
@@ -85,12 +85,12 @@ export function Library(props) {
             <div className="card" key={result.id}>
               {result.card_faces ? (
                 <div>
-                  {result.card_faces.map((cardFaces, index) => (
-                    <div key={index}>{renderCardDetails(cardFaces)}</div>
+                  {result.card_faces.map((cardFace, index) => (
+                    <div key={index}>{renderCardDetails(cardFace, result.purchase_uris)}</div>
                   ))}
                 </div>
               ) : (
-                <div>{renderCardDetails(result)}</div>
+                <div>{renderCardDetails(result, result.purchase_uris)}</div>
               )}
             </div>
           ))}

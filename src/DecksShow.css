@@ -1,0 +1,36 @@
+/* DeckShow.css */
+
+
+form {
+  margin-bottom: 20px;
+}
+
+form div {
+  margin-bottom: 10px;
+}
+
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(5px, 1fr));
+  grid-gap: 15px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #fff;
+}
+
+
+.card p {
+  margin: 5px 0;
+}
+
+
