@@ -38,7 +38,7 @@ export function DecksShow(props) {
             <p>CMC: {card_deck.card.cmc}</p>
             <p>{card_deck.card.card_type}</p>
             <p>
-              Power: {card_deck.card.power} / Toughness: {card_deck.card.toughness}
+              Power: {card_deck.card.power || "N/A"} / Toughness: {card_deck.card.toughness || "N/A"}
             </p>
             <p>Oracle Text: {card_deck.card.oracle_text}</p>
           </div>

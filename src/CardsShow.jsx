@@ -17,7 +17,7 @@ export function CardsShow(props) {
       <p>CMC: {props.card.cmc}</p>
       <p>{props.card.card_type}</p>
       <p>
-        Power: {props.card.power} / Toughness: {props.card.toughness}
+        Power: {props.card.power || "N/A"} / Toughness: {props.card.toughness || "N/A"}
       </p>
       <p>Oracle Text: {props.card.oracle_text}</p>
 

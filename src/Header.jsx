@@ -14,7 +14,7 @@ export function Header() {
         <Link to="/decks/new">New Deck</Link>
         <Link to="/cards">Cards</Link>
         <Link to="/cards/new">New Cards</Link>
-        <Link to="/carddeck/new">Card to Deck</Link>
+        {/* <Link to="/carddeck/new">Card to Deck</Link> */}
       </nav>
     </header>
   );
