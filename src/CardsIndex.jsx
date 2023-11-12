@@ -13,6 +13,7 @@ export function CardsIndex(props) {
             <p>
               Power: {card.power} / Toughness: {card.toughness}
             </p>
+            {/* <p>Oracle Text: {card.oracle_text}</p> */}
             <button onClick={() => props.onShowCard(card)}>More Info:</button>
           </div>
         ))}

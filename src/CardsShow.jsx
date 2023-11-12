@@ -19,6 +19,7 @@ export function CardsShow(props) {
       <p>
         Power: {props.card.power} / Toughness: {props.card.toughness}
       </p>
+      <p>Oracle Text: {props.card.oracle_text}</p>
 
       {/* <form onSubmit={handleSubmit}>
         <div>

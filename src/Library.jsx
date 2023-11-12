@@ -33,6 +33,7 @@ export function Library(props) {
         cmc: card.cmc,
         power: card.power,
         toughness: card.toughness,
+        oracle_text: card.oracle_text,
         quantity: card.quantity,
         deck_id: card.deck_id,
       },
@@ -46,7 +47,7 @@ export function Library(props) {
       <p>Card Name: {card.name}</p>
       <p>Mana Cost: {card.mana_cost}</p>
       <p>Card Type: {card.type_line}</p>
-      <p>Oracle text: {card.oracle_text}</p>
+      <p>Oracle Text: {card.oracle_text}</p>
       <p>
         Power and Toughness: {card.power}/{card.toughness}
       </p>

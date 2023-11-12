@@ -38,6 +38,7 @@ export function DecksShow(props) {
           <p>
             Power: {card_deck.card.power} / Toughness: {card_deck.card.toughness}
           </p>
+          <p>Oracle Text: {card_deck.card.oracle_text}</p>
         </div>
       ))}
       <button onClick={handleClick}>Destroy Deck</button>
