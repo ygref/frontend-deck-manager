@@ -25,6 +25,22 @@ export function Library(props) {
     }
   };
 
+  const handleKeywordSearch = async (searchKeyword) => {
+    const searchUrl = `https://api.scryfall.com/cards/search?q=oracle%3A${searchKeyword}`;
+
+    try {
+      const response = await fetch(searchUrl);
+      if (response.ok) {
+        const data = await response.json();
+        setSearchResults(data);
+      } else {
+        console.error("Failed to fetch data");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   const handleAddCard = (card) => {
     props.onCreateCard(
       {
@@ -43,7 +59,7 @@ export function Library(props) {
 
   const renderCardDetails = (card, purchase_uris) => (
     <div>
-      <img src={card.image_uris.small} />
+      {card.image_uris && card.image_uris.small && <img src={card.image_uris.small} alt={card.name} />}
       <p>Card Name: {card.name}</p>
       <p>Mana Cost: {card.mana_cost}</p>
       <p>Card Type: {card.type_line}</p>
@@ -54,9 +70,9 @@ export function Library(props) {
       <p>Loyalty: {card.loyalty || "N/A"}</p>
       <p>Sets: {card.set_name}</p>
       <p>Price USD: {card.prices && card.prices.usd ? card.prices.usd : "N/A"}</p>
-      <p>
-        <a href={purchase_uris.tcgplayer}>Purchase on TCGPlayer</a>{" "}
-      </p>
+      {/* <p>
+        <a href={card.purchase_uris.tcgplayer}>Purchase on TCGPlayer</a>{" "}
+      </p> */}
       <select onChange={(event) => (card.deck_id = event.target.value)}>
         <option value="">- Select a Deck -</option>
         {props.decks.map((deck) => (
@@ -76,7 +92,8 @@ export function Library(props) {
       <h2>Search for a Card Here:</h2>
       <div className="search-container">
         <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
-        <button onClick={handleSearch}>Search</button>
+        <button onClick={handleSearch}>Search by Name</button>
+        <button onClick={() => handleKeywordSearch(searchQuery)}>Search by Keyword</button>
       </div>
       {searchResults && (
         <div className="card-container">
