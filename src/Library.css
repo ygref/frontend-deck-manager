@@ -54,6 +54,7 @@
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
+  margin: 1px
 }
 
 .search-container button:hover {
