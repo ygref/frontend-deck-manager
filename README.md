@@ -27,6 +27,7 @@ npm run dev
 ## Roadmap
 
 Implement single-button login / OAuth for users for QoL.
+Implement Pagination in API search.
 Implement an images table that allows the user to go to a specific card and visually see all possible card images,
 this would be especially helpful to cards in alternate languages.
 Implement more robust pricing logic, to be able to cross reference prices from multiple sources without visual clutter.
